@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia APP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <form onsubmit="getQuestions(),event.preventDefault()">
+            <div class="form-group">
+                <label for="questions-number">Eige cuántas preguntas quieres</label>
+                <select  class="form-control" id="questions-number">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+                <select  class="form-control" id="category">
+                
+                </select>
+                <select  class="form-control" id="difficulty">
+                    <option value="Easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <select  class="form-control" id="type">
+                    <option value="multiple">Multiple-choice</option>
+                    <option value="boolean">true/false</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        <!-- Aquí van las tarjetas -->
+        <div id="container-cards">
+
+        </div>
+    </div>
+    <script src="./js/filter-type.js"></script>
+    
+</body>
+</html>
