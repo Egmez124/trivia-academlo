@@ -1,11 +1,18 @@
 function getQuestions() {
     const questionsQuantity = document.getElementById('questions-number').value
-    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}`)
+    const questionsDifficulty = document.getElementById('questions-difficulty').value
+    const questionCategory = document.getElementById('questions-category').value
+    const questionType= document.getElementById('type').value
+    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&difficulty=${questionsDifficulty}&category=${questionCategory}&type=${questionType}`)
         .then(response => response.json())
         .then(data => printCards(data.results))
 }
 
-// console.log(datos);
+function getCategory() {
+    fetch(`https://opentdb.com/api_category.php`)
+        .then(response => response.json())
+        .then(data => printCategory(data.trivia_categories))
+}
 
 function printCards(questions) {
     const container = document.getElementById('container-cards');
@@ -14,20 +21,26 @@ function printCards(questions) {
         const card = returnCardHTML(question);
         container.innerHTML += card;
     });
-    // poner las preguntas en mi página web
+}
+
+function printCategory (category) {
+    const container = document.getElementById('questions-category');
+    category.forEach(categorys => {
+    container.innerHTML += `<option value="${categorys.id}">${categorys.name}</option>`;})
 }
 
 function returnCardHTML(q) {
     const card = `<div class="card">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
+                    <h5 class="card-title">${q.difficulty}</h5>
+                    <h5 class="card-title">${q.type}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
                         ${returnAnswersHTML(q.correct_answer, q.incorrect_answers)}           
                     </div>
                 </div>`
     return card;
 }
-
 
 function returnAnswersHTML(correct, incorrects) {
     const correctHTML = `<div class="form-check">
@@ -36,7 +49,6 @@ function returnAnswersHTML(correct, incorrects) {
                             ${correct}
                             </label>
                         </div>`;
-
 
     let incorrectHTML = '';
     incorrects.forEach((incorrect) => {
@@ -47,7 +59,7 @@ function returnAnswersHTML(correct, incorrects) {
                             </label>
                         </div>`;
     })
-
-
     return correctHTML + incorrectHTML;
 }
+
+getCategory();

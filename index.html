@@ -5,26 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia APP</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
-    
-    <div class="container mt-5">
-        <div>
-            <div class="form-group">
-                <label for="questions-number">Eige cuántas preguntas quieres</label>
-                <select onchange="getQuestions()" class="form-control" id="questions-number">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                </select>
-              </div>
+<body>    
+  <div class="container">
+    <div class="row">
+      <!-- preguntas por número -->
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12"> 
+        <div class="form-group">
+          <label for="questions-number">Elige cuántas preguntas quieres: </label>
+          <select onchange="getQuestions()" class="form-control" id="questions-number">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
         </div>
-        <!-- Aquí van las tarjetas -->
-        <div id="container-cards">
-
+      </div>
+      <!-- preguntas por dificultad -->
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+        <div class="form-group">
+          <label for="questions-difficulty">Elige por dificultad: </label>
+          <select onchange="getQuestions()" class="form-control" id="questions-difficulty">
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
         </div>
+      </div>
+      <!-- preguntas por categoría -->
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+        <div class="form-group">
+          <label for="questions-category">Eige por categoria: </label>
+          <select onchange="getQuestions()" class="form-control" id="questions-category">
+          </select>
+        </div>
+      </div>
+      <!-- preguntas por tipo -->
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+        <div class="form-group">
+          <label for="type">Elige por tipo: </label>
+          <select  onchange="getQuestions()" class="form-control" id="type">
+            <option value="multiple">Multiple-choice</option>
+            <option value="boolean">true/false</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <script src="./js/main.js"></script>
+    <!-- Aquí van las tarjetas -->  
+    <div class="row">
+      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12" id="container-cards"></div>
+    </div>       
+  </div>   
+  <script src="./js/main.js"></script>
 </body>
 </html>
