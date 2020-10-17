@@ -9,12 +9,14 @@
 </head>
 <body>    
   <div class="container">
+    <form action="" id="form-filter">
     <div class="row">
+      
       <!-- preguntas por número -->
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12"> 
         <div class="form-group">
           <label for="questions-number">Elige cuántas preguntas quieres: </label>
-          <select onchange="getQuestions()" class="form-control" id="questions-number">
+          <select onchange="" class="form-control" id="questions-number">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -26,7 +28,7 @@
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div class="form-group">
           <label for="questions-difficulty">Elige por dificultad: </label>
-          <select onchange="getQuestions()" class="form-control" id="questions-difficulty">
+          <select onchange="" class="form-control" id="questions-difficulty">
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="hard">hard</option>
@@ -37,7 +39,7 @@
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div class="form-group">
           <label for="questions-category">Eige por categoria: </label>
-          <select onchange="getQuestions()" class="form-control" id="questions-category">
+          <select onchange="" class="form-control" id="questions-category">
           </select>
         </div>
       </div>
@@ -45,19 +47,23 @@
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div class="form-group">
           <label for="type">Elige por tipo: </label>
-          <select  onchange="getQuestions()" class="form-control" id="type">
+          <select  onchange="" class="form-control" id="type">
             <option value="multiple">Multiple-choice</option>
             <option value="boolean">true/false</option>
           </select>
         </div>
       </div>
+     
     </div>
+    <button type="submit" class="btn btn-primary"> GENERAR </button>
+  </form>
+  
     <!-- Aquí van las tarjetas -->  
     <div class="row">
       <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12" id="container-cards"></div>
     </div> 
   
   </div>   
-  <script src="./js/main.js"></script>
+  <script  type="module" src="./js/main.js"></script>
 </body>
 </html>
