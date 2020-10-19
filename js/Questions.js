@@ -1,3 +1,6 @@
+import Rand from './Rand.js'
+import Verify from './Verify.js'
+
 export default class Question {
    
     getQuestions() {
@@ -15,49 +18,45 @@ export default class Question {
         container.innerHTML = '';
         questions.forEach((question,index) => {
            
-            container.innerHTML += `<section>
-                                        <div class="card">
-                                        <div class="card-body">
-                                        <h5 class="card-title">${question.category}</h5>
-                                        <h5 class="card-title">${question.difficulty}</h5>
-                                        <h5 class="card-title">${question.type}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">${question.question}</h6>
+            container.innerHTML += `<section class="mt-2 animated" id="card-${index}">
+                                        <div class="card ">
+                                            <div class="card-body ">
+                                                <h5 class="card-title mb-2 text-muted">${question.question}</h5>
+                                                <h6 class="card-subtitle">${question.category}</h6>
+                                                <h6 class="card-subtitle">${question.difficulty}</h6>
+                                                
+                                                
                                              ${this.returnAnswersHTML(question.correct_answer, question.incorrect_answers,index)}     
                       
-                                        </div>
-            
+                                            </div>
                                         </div>
                                     </section>`;
         });
-        container.innerHTML+=`<button onclick="verify()" class="btn btn-primary">Comprobar</button>
-                               `
+        container.innerHTML+=`<button type="submit"  class="mt-2 btn btn-primary">Comprobar</button>
+                              `
+        document.getElementById('container-cards').addEventListener('submit',(event)=>{
+        event.preventDefault();
+        const _verify = new Verify();
+        _verify.check();
+        });
     }
     
  
-    getRandom(min,max){
-        return Math.floor(Math.random()*(max-min)+min);
-    }
-
     returnAnswersHTML(correct, incorrects,indexCard) {
-    let randomIndex=0;
-    if (document.getElementById('type').value==='boolean'){
-        randomIndex=this.getRandom(0,2);
-    }
-    else{
-        randomIndex=this.getRandom(0,4)
-    }
-    incorrects.splice(randomIndex,0,correct);
-    let answersHtml = '';
-    incorrects.forEach((incorrect,index) => {
-        answersHtml += `
+        const _rand = new Rand(document.getElementById('type').value)
+        const randomIndex= _rand.randGenerator();
+        incorrects.splice(randomIndex,0,correct);
+        let answersHtml = '';
+        incorrects.forEach((incorrect,index) => {
+            answersHtml += `
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice-${indexCard}-${randomIndex}" id="answer-id-${indexCard}-${index}" value="${incorrect}" >
+                            <input class="form-check-input" type="radio" name="choice-${indexCard}-${randomIndex}" id="answer-id-${indexCard}-${index}" value="${incorrect}" required>
                             <label class="form-check-label" for="answer-id-${indexCard}-${index}">
                             ${incorrect}
                             </label>
                         </div>
                         `;
-    })
-    return  answersHtml;
-}
+        })
+        return  answersHtml;
+    }
 }
