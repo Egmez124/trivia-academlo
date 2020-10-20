@@ -1,3 +1,6 @@
+import Rand from './Rand.js'
+import Verify from './Verify.js'
+
 export default class Question {
    
     getQuestions() {
@@ -22,8 +25,7 @@ export default class Question {
                                         <h5 class="card-subtitle mb-2 text-muted">${question.question}</h5>
                                              ${this.returnAnswersHTML(question.correct_answer, question.incorrect_answers,index)}     
                       
-                                        </div>
-            
+                                            </div>
                                         </div>
                                     </section>`;
         });
@@ -32,49 +34,21 @@ export default class Question {
     }
     
  
-    getRandom(min,max){
-        return Math.floor(Math.random()*(max-min)+min);
-    }
-
     returnAnswersHTML(correct, incorrects,indexCard) {
-    let randomIndex=0;
-    if (document.getElementById('type').value==='boolean'){
-        randomIndex=this.getRandom(0,2);
-    }
-    else{
-        randomIndex=this.getRandom(0,4)
-    }
-    incorrects.splice(randomIndex,0,correct);
-    let answersHtml = '';
-    incorrects.forEach((incorrect,index) => {
-        answersHtml += `
+        const _rand = new Rand(document.getElementById('type').value)
+        const randomIndex= _rand.randGenerator();
+        incorrects.splice(randomIndex,0,correct);
+        let answersHtml = '';
+        incorrects.forEach((incorrect,index) => {
+            answersHtml += `
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice-${indexCard}-${randomIndex}" id="answer-id-${indexCard}-${index}" value="${incorrect}" >
+                            <input class="form-check-input" type="radio" name="choice-${indexCard}-${randomIndex}" id="answer-id-${indexCard}-${index}" value="${incorrect}" required>
                             <label class="form-check-label" for="answer-id-${indexCard}-${index}">
                             ${incorrect}
                             </label>
                         </div>
                         `;
-    })
-    return  answersHtml;
-    }
-
-    verify(){
-        const formAnswers=[];
-        for(let i=0;i<document.getElementById('questions-number').value;i++){
-            for(let j=0;j<4;j++){
-                if(document.getElementById(`answer-id-${i}-${j}`).checked){
-                    if(j==document.getElementById(`answer-id-${i}-${j}`).name.slice(9,11)){
-                        formAnswers.push('true')
-                    }
-                    else{
-                        formAnswers.push('false')
-                    }
-                }
-            }
-        }
-        const corectAnsers= formAnswers.filter(element=>element=='true')
-        alert(`${corectAnsers.length} preguntas correctas de ${document.getElementById('questions-number').value}`)
-        //console.log(document.getElementsByName('choice-0'))
+        })
+        return  answersHtml;
     }
 }

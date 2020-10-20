@@ -1,4 +1,4 @@
-import Category from './Category.js'
+import Category from './Category.js';
 import Question from './Questions.js';
 
 
@@ -14,7 +14,14 @@ document.getElementById('form-filter').addEventListener('submit', (event) => {
 
 });
 
+<<<<<<< HEAD
 const callCategory=new Category('https://opentdb.com/api_category.php');
 callCategory.getCategory();
 
 
+=======
+
+const callCategory=new Category('https://opentdb.com/api_category.php');
+callCategory.getCategory();
+
+>>>>>>> 3b7d6ac8c2d314972cb8e8e4789c6fb311a643b3
