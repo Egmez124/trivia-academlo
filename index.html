@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>   
-
-  
+<body>    
   <div class="container">
     <form action="" id="form-filter">
       <div class="row">
+        
         <!-- preguntas por número -->
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12"> 
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12"> 
           <div class="form-group">
             <label for="questions-number">Elige cuántas preguntas quieres: </label>
             <select onchange="" class="form-control" id="questions-number">
@@ -26,7 +25,7 @@
           </div>
         </div>
         <!-- preguntas por dificultad -->
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
           <div class="form-group">
             <label for="questions-difficulty">Elige por dificultad: </label>
             <select onchange="" class="form-control" id="questions-difficulty">
@@ -37,7 +36,7 @@
           </div>
         </div>
         <!-- preguntas por categoría -->
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
           <div class="form-group">
             <label for="questions-category">Eige por categoria: </label>
             <select onchange="" class="form-control" id="questions-category">
@@ -45,7 +44,7 @@
           </div>
         </div>
         <!-- preguntas por tipo -->
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
           <div class="form-group">
             <label for="type">Elige por tipo: </label>
             <select  onchange="" class="form-control" id="type">
@@ -53,22 +52,20 @@
               <option value="boolean">true/false</option>
             </select>
           </div>
-        </div>
-     
-    </div>
-    <button type="submit" class="btn btn-outline-light"> GENERAR </button>
-  </form>
+        </div>     
+      </div>
+      <button type="submit" class="btn btn-outline-light"> GENERAR </button>
+    </form>
   
     <!-- Aquí van las tarjetas -->  
     <div class="row">
-      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12" id=""></div>
-        <form action="" id="container-cards">
-
-        </form>
+      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+        <form action="" id="container-cards"></form>    
+      </div>
+      
     </div> 
-    
+  
   </div>   
-  <script type="module" src="./js/main.js"></script>
-   
+  <script  type="module" src="./js/main.js"></script>
 </body>
 </html>

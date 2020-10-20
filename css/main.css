@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding: 0px;
     margin: 0px;
@@ -28,7 +28,7 @@ body {
 .form-group label {
     width: 160px;
 }
-form {
+#form-filter {
     background-color: rgba(0, 0, 0, 0.486);
     color:white;
     display: flex;
@@ -50,12 +50,17 @@ form {
         margin-left: 0;
     }
 }
-
 .card {
     margin-bottom: 2%;
     box-shadow: 10px 10px 8px #888888;
 }
+h6 {
+    color: #6f42c1;
+}
 h5 {
     font-weight: bolder;
-    color: darkblue;
+    color: rgb(50, 200, 205);
+}
+.form-check {
+    color: rgb(255, 174, 0);
 }

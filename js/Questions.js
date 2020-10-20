@@ -18,19 +18,23 @@ export default class Question {
         container.innerHTML = '';
         questions.forEach((question,index) => {
            
-            container.innerHTML += `<section>
-                                        <div class="card">
-                                        <div class="card-body">
-                                        <h6 class="card-title"><bold>Categoría: </bold>${question.category} - <bold>Dificultad: </bold>${question.difficulty} - <bold>Tipo: </bold>${question.type}</h6>                                        
-                                        <h5 class="card-subtitle mb-2 text-muted">${question.question}</h5>
-                                             ${this.returnAnswersHTML(question.correct_answer, question.incorrect_answers,index)}     
-                      
+            container.innerHTML += `<section class="mt-2 animated" id="card-${index}">
+                                        <div class="card ">
+                                            <div class="card-body ">
+                                                <h6 class="card-title"><bold>Categoría: </bold>${question.category} - <bold>Dificultad: </bold>${question.difficulty} - <bold>Tipo: </bold>${question.type}</h6>                                        
+                                                <h5 class="card-subtitle mb-2">${question.question}</h5>                                              
+                                                ${this.returnAnswersHTML(question.correct_answer, question.incorrect_answers,index)}                                       
                                             </div>
                                         </div>
                                     </section>`;
         });
-        container.innerHTML+=`<button onclick="${this.verify()}" class="btn btn-warning">Comprobar</button>
-                               `
+        container.innerHTML+=`<button type="submit"  class="mt-2 btn btn-warning">Comprobar</button>
+                              `
+        document.getElementById('container-cards').addEventListener('submit',(event)=>{
+        event.preventDefault();
+        const _verify = new Verify();
+        _verify.check();
+        });
     }
     
  
