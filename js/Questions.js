@@ -18,10 +18,8 @@ export default class Question {
             container.innerHTML += `<section>
                                         <div class="card">
                                         <div class="card-body">
-                                        <h5 class="card-title">${question.category}</h5>
-                                        <h5 class="card-title">${question.difficulty}</h5>
-                                        <h5 class="card-title">${question.type}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">${question.question}</h6>
+                                        <h6 class="card-title"><bold>Categoría: </bold>${question.category} - <bold>Dificultad: </bold>${question.difficulty} - <bold>Tipo: </bold>${question.type}</h6>                                        
+                                        <h5 class="card-subtitle mb-2 text-muted">${question.question}</h5>
                                              ${this.returnAnswersHTML(question.correct_answer, question.incorrect_answers,index)}     
                       
                                         </div>
@@ -29,7 +27,7 @@ export default class Question {
                                         </div>
                                     </section>`;
         });
-        container.innerHTML+=`<button onclick="verify()" class="btn btn-primary">Comprobar</button>
+        container.innerHTML+=`<button onclick="${this.verify()}" class="btn btn-warning">Comprobar</button>
                                `
     }
     
@@ -59,5 +57,24 @@ export default class Question {
                         `;
     })
     return  answersHtml;
-}
+    }
+
+    verify(){
+        const formAnswers=[];
+        for(let i=0;i<document.getElementById('questions-number').value;i++){
+            for(let j=0;j<4;j++){
+                if(document.getElementById(`answer-id-${i}-${j}`).checked){
+                    if(j==document.getElementById(`answer-id-${i}-${j}`).name.slice(9,11)){
+                        formAnswers.push('true')
+                    }
+                    else{
+                        formAnswers.push('false')
+                    }
+                }
+            }
+        }
+        const corectAnsers= formAnswers.filter(element=>element=='true')
+        alert(`${corectAnsers.length} preguntas correctas de ${document.getElementById('questions-number').value}`)
+        //console.log(document.getElementsByName('choice-0'))
+    }
 }
